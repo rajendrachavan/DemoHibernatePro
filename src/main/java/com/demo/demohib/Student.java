@@ -1,15 +1,21 @@
 package com.demo.demohib;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
     
-    @Id
+    @Id 
     private int sid;
-    private String sname;
-    private int sdeptid;
+    private StudentName sname;
+    private int marks;
+    @ManyToOne
+    private Department department;
 
     public int getSid() {
         return sid;
@@ -19,25 +25,33 @@ public class Student {
         this.sid = sid;
     }
 
-    public String getSname() {
+    public StudentName getSname() {
         return sname;
     }
 
-    public void setSname(String sname) {
+    public void setSname(StudentName sname) {
         this.sname = sname;
     }
 
-    public int getSdeptid() {
-        return sdeptid;
+    public int getMarks() {
+        return marks;
     }
 
-    public void setSdeptid(int sdeptid) {
-        this.sdeptid = sdeptid;
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+
+    public Department getDept() {
+        return department;
+    }
+
+    public void setDept(Department dept) {
+        this.department = dept;
     }
 
     @Override
     public String toString() {
-        return "Student{" + "sid=" + sid + ", sname=" + sname + ", sdeptid=" + sdeptid + '}';
+        return "Student{" + "sid=" + sid + ", sname=" + sname + ", marks=" + marks + ", department=" + department + '}';
     }
     
 }
